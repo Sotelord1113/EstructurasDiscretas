@@ -1,2 +1,4 @@
 # EstructurasDiscretas
-Repositorio para la materia de estructuras discretras
+Integrantes:
+Miguel Ángel Orozco Diaz
+Sotelo Lara Hector Alberto

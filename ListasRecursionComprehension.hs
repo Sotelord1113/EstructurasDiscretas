@@ -7,10 +7,9 @@ sumaLista [] = 0
 sumaLista (x:xs) = x + sumaLista(xs)
 
 agregaElemento :: [a] -> a -> Bool -> [a]
-agregaElemento [] elem _ = [elem]
-agregaElemento (x:xs) elem bool = if bool
-                                  then elem : (x:xs)
-                                  else (x:xs) ++ [elem]
+agregaElemento lista elem bool = if bool
+                                  then elem : lista
+                                  else lista ++ [elem]
 
 maximoLista :: (Num a, Ord a) => [a] -> a
 maximoLista [x] = x

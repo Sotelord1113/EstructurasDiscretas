@@ -25,26 +25,20 @@ conjunto (Node x lista) = if estaContenido lista x
                             else Node x (conjunto lista)
 
 eliminarIndice :: List a -> Int -> List a
-eliminarIndice Void indice = if indice < 0 || indice > 0
-                                then error "Indice fuera del rango permitido"
-                                else error "Indice fuera del rango permitido"
-eliminarIndice (Node a lista) indice = if indice < 0 || indice >= longitud (Node a lista)
-                                    then error "Indice fuera del rango permitido"
-                                    else if indice == 0
-                                        then lista
-                                        else Node a (eliminarIndice lista (indice - 1))
+eliminarIndice Void indice = error "No existe indice en lista vacia"
+eliminarIndice(Node a lista) 0 = lista
+eliminarIndice(Node a lista) indice = if indice < 0 || indice > longitud (Node a lista)-1
+                                         then error "Indice fuera del rango permitido"
+                                        else Node a (eliminarIndice lista(indice-1))
 
 insertarIndice :: List a -> Int -> a -> List a
-insertarIndice Void indice x = if indice < 0 || indice > 0 
-                                    then error "El indice no es valido"
-                                    else if indice == 0
-                                        then (Node x Void)
-                                        else error "Indice fuera del rango permitido"
-insertarIndice z@(Node x lista) indice y = if indice < 0 || indice > longitud (Node x lista)
-                                            then error "El indice no es valido"
-                                            else if indice == 0
-                                                then Node y z
-                                                else Node x (insertarIndice lista (indice - 1) y)
+insertarIndice Void indice x = if indice /= 0
+                then error "Indice fuera del rango permitido"
+                else (Node x Void)
+insertarIndice (Node a lista) 0 x = Node x (Node a lista)
+insertarIndice (Node a lista) indice x = if indice < 0 || indice > longitud (Node a lista)
+                                            then error "Indice fuera del rango permitido"
+                                            else Node a (insertarIndice lista(indice-1)x)
 
 recorrerLista :: List a -> Int -> List a
 recorrerLista Void recorrido = Void
